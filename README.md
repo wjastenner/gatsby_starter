@@ -14,7 +14,7 @@
 
 ### To get started carry out the following:
 
-1. `git clone`
+1. `git clone https://github.com/wjastenner/gatsby_starter.git`
 2. `npm install`
 3. run `gatsby develop` to start development (ensure you have gatsby cli installed)
 
