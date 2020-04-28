@@ -1,21 +1,38 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useContext } from "react";
+import { Link } from "gatsby";
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import { Context } from "../context/context";
 
-export default IndexPage
+import Container from "../components/boxes/container";
+import { Heading, Subheading } from "../typography/headings";
+import { P, Code } from "../typography/texts";
+
+const Index = () => {
+  const state = useContext(Context);
+
+  return (
+    <Layout>
+      <Container bg="secondary">
+        <SEO title="Home" />
+        <Heading>This is a heading</Heading>
+        <Subheading>This is a subheading</Subheading>
+        <P>Check out some P tag</P>
+        <Code>And now some code</Code>
+        <P>The menu is {state.menuIsOpen ? "open" : "closed"}</P>
+        <button
+          onClick={() => {
+            state.setMenuIsOpen(!state.menuIsOpen);
+          }}
+        >
+          Toggle menu status
+        </button>
+        <Link to="about">Gatsby Link</Link>
+      </Container>
+    </Layout>
+  );
+};
+
+export default Index;
